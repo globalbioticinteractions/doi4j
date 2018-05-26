@@ -1,6 +1,6 @@
 # doi4j
 [![Build Status](https://travis-ci.org/globalbioticinteractions/doi4j.svg?branch=master)](https://travis-ci.org/globalbioticinteractions/doi4j) [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
-[![DOI](https://zenodo.org/badge/117019305.svg)](https://zenodo.org/badge/latestdoi/117019305)
+[![DOI](https://zenodo.org/badge/1253748.svg)](https://zenodo.org/badge/latestdoi/1253748)
 
 Java library for parsing and presenting Digital Object Identifiers (DOIs).
 
