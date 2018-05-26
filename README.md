@@ -8,9 +8,8 @@ According [doi.org](https://doi.org), the ```[...] DOI system provides a technic
 
 At first glance, the DOI syntax is pretty simple (e.g., 10.[registrant code]/[suffix], or 10.123/456), but tricky encoding issues can arise when expressing them as URIs. Because these encodings might not be easy to handle (e.g., a well-formed URI presentation of doi ```10.1000/456#789``` is ```https://doi.org/10.1000/456%23789``` and *not* ```https://doi.org/10.1000/456#789```), this library was created.
 
-Please see  section "2.5.2.3 Encoding Issues" of the the DOI handbook (also see https://www.doi.org/doi_handbook/2_Numbering.html#2.5.2.3) for more information:
+Please see  section "2.5.2.3 Encoding Issues" of the the DOI handbook (also see https://www.doi.org/doi_handbook/2_Numbering.html#2.5.2.3) for more information.
 
-```[...] Hexadecimal (%) encoding must be used for characters in a DOI that are not allowed, or have other meanings, in URLs or URNs. Hex encoding consists of substituting for the given character its hexadecimal value preceded by percent. Thus, # becomes %23 and https://doi.org/10.1000/456#789 is encoded as https://doi.org/10.1000/456%23789. The browser does not now encounter the bare #, which it would normally treat as the end of the URL and the start of a fragment, and so sends the entire string off to the DOI network of servers for resolution, instead of stopping at the #. Note that the DOI itself does not change with encoding, merely its representation in a URL. A DOI that has been encoded is decoded before being sent to the DOI Registry. At the moment the decoding is handled by the proxy server https://doi.org/. Only unencoded DOIs are stored in the DOI Registry database. For example, the number above is in the DOI Registry as "10.1000/456#789" and not "10.1000/456%23789". The percent character (%) must always be hex encoded (%25) in any URLs. [...]```
 
 
 ## Table of Contents
