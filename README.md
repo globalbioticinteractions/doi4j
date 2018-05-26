@@ -6,7 +6,7 @@ Java library for parsing and presenting Digital Object Identifiers (DOIs).
 
 According [doi.org](https://doi.org), the ```[...] DOI system provides a technical and social infrastructure for the registration and use of persistent interoperable identifiers, called DOIs, for use on digital networks.[...]```.
 
-while the DOI syntax is pretty simple (e.g., 10.[registrant code]/[suffix], or 10.123/456), tricky encoding issues can arise when expressing them as URIs. Because these encoding might not be easy to catch (e.g., a well-formed URI presentation of doi ```10.1000/456#789``` is ```https://doi.org/10.1000/456%23789``` and *not* ```https://doi.org/10.1000/456#789```), this library was created.
+At first glance, the DOI syntax is pretty simple (e.g., 10.[registrant code]/[suffix], or 10.123/456), but tricky encoding issues can arise when expressing them as URIs. Because these encodings might not be easy to handle (e.g., a well-formed URI presentation of doi ```10.1000/456#789``` is ```https://doi.org/10.1000/456%23789``` and *not* ```https://doi.org/10.1000/456#789```), this library was created.
 
 Please see  section "2.5.2.3 Encoding Issues" of the the DOI handbook (also see https://www.doi.org/doi_handbook/2_Numbering.html#2.5.2.3) for more information:
 
