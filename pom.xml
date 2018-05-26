@@ -4,8 +4,8 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.globalbioticinteractoins</groupId>
-    <artifactId>doi</artifactId>
+    <groupId>org.globalbioticinteractions</groupId>
+    <artifactId>doi4j</artifactId>
     <version>0.0.1</version>
     <name>Java library to parse and present Digital Object Identifiers (DOIs).</name>
 
