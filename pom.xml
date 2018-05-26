@@ -6,7 +6,7 @@
 
     <groupId>org.globalbioticinteractoins</groupId>
     <artifactId>doi</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>Java library to parse and present Digital Object Identifiers (DOIs).</name>
 
     <licenses>
