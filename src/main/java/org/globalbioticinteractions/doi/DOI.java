@@ -9,7 +9,7 @@ import java.net.URI;
  * <p>Mainly introduced to avoid encoding mistakes like mentioned in http://www.doi.org/doi_handbook/2_Numbering.html#2.5.2.3 :</p>
  *
  * <p>2.5.2.3 Encoding issues</p>
- * <p>There are special encoding requirements when a DOI is used with HTML, URLs, and HTTP. The syntax for Uniform Resource Identifiers (URIs) is much more restrictive than the syntax for the DOI. A URI can be a Uniform Resource Locator (URL) or a Uniform Resource Name (URN).</p
+ * <p>There are special encoding requirements when a DOI is used with HTML, URLs, and HTTP. The syntax for Uniform Resource Identifiers (URIs) is much more restrictive than the syntax for the DOI. A URI can be a Uniform Resource Locator (URL) or a Uniform Resource Name (URN).</p>
  * <p>Hexadecimal (%) encoding must be used for characters in a DOI that are not allowed, or have other meanings, in URLs or URNs. Hex encoding consists of substituting for the given character its hexadecimal value preceded by percent. Thus, # becomes %23 and https://doi.org/10.1000/456#789 is encoded as https://doi.org/10.1000/456%23789. The browser does not now encounter the bare #, which it would normally treat as the end of the URL and the start of a fragment, and so sends the entire string off to the DOI network of servers for resolution, instead of stopping at the #. Note that the DOI itself does not change with encoding, merely its representation in a URL. A DOI that has been encoded is decoded before being sent to the DOI Registry. At the moment the decoding is handled by the proxy server https://doi.org/. Only unencoded DOIs are stored in the DOI Registry database. For example, the number above is in the DOI Registry as "10.1000/456#789" and not "10.1000/456%23789". The percent character (%) must always be hex encoded (%25) in any URLs.</p>
  * <p>There are few character restrictions for DOI number strings per se. When DOIs are embedded in URLs, they must follow the URL syntax conventions. The same DOI need not follow those conventions in other contexts.The directory indicator shall be "10". The directory indicator distinguishes the entire set of character strings (prefix and suffix) as digital object identifiers within the resolution system.</p>
  *
@@ -37,10 +37,9 @@ public final class DOI implements Serializable {
 
      <b>EXAMPLE 1</b>
      <p>10.1000/123456	DOI name with the DOI prefix "10.1000" and the DOI suffix "123456".</p>
-     EXAMPLE 2
-     10.1038/issn.1476-4687   	DOI suffix using an ISSN. To construct a DOI suffix using an ISSN, precede the ISSN (including the hyphen) with the lowercase letters "issn" and a period, as in this hypothetical example of a DOI for the electronic version of Nature.
-
-     * </quote>
+     <p>EXAMPLE 2</p>
+     <p>10.1038/issn.1476-4687   	DOI suffix using an ISSN. To construct a DOI suffix using an ISSN, precede the ISSN (including the hyphen) with the lowercase letters "issn" and a period, as in this hypothetical example of a DOI for the electronic version of Nature.
+     * </p>
      *
      * @return DOI suffix
      */
@@ -76,7 +75,7 @@ public final class DOI implements Serializable {
     /**
      * Returns the DOI Directory Indicator. According to <a href="https://www.doi.org/doi_handbook/2_Numbering.html#2.2.2">2.2.2 DOI prefix</a> of the DOI handbook :
      *
-     * <quote>The directory indicator shall be "10". The directory indicator distinguishes the entire set of character strings (prefix and suffix) as digital object identifiers within the resolution system.</quote>
+     * <p>The directory indicator shall be "10". The directory indicator distinguishes the entire set of character strings (prefix and suffix) as digital object identifiers within the resolution system.</p>
 
      * @return directory indicator (always "10")
      */
@@ -88,8 +87,8 @@ public final class DOI implements Serializable {
     /**
      * Returns DOI Registrant Code as defined in <a href="https://www.doi.org/doi_handbook/2_Numbering.html#2.2.2">2.2.2 DOI prefix</a> of the DOI handbook :
      *
-     * <quote>The second element of the DOI prefix shall be the registrant code. The registrant code is a unique string assigned to a registrant.
-     * </quote>
+     * <p>The second element of the DOI prefix shall be the registrant code. The registrant code is a unique string assigned to a registrant.
+     * </p>
      *
      * @return DOI registrant code
      */
@@ -138,7 +137,7 @@ public final class DOI implements Serializable {
      *
      * @param doiString a string containing a doi.
      * @return a well-formed DOI
-     * @throws MalformedDOIException
+     * @throws MalformedDOIException on malformed DOI (e.g., 9.123/2432)
      */
     public static DOI create(String doiString) throws MalformedDOIException {
         String s = DOIUtil.stripDOIPrefix(doiString);
@@ -152,7 +151,7 @@ public final class DOI implements Serializable {
      *
      * @param doiURI a well-formed DOI URI
      * @return well-formed DOI
-     * @throws MalformedDOIException
+     * @throws MalformedDOIException on malformed DOI (e.g., 9.123/2432)
      */
     public static DOI create(URI doiURI) throws MalformedDOIException {
         String path = doiURI == null ? "" : doiURI.getPath();
