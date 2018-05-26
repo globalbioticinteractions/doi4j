@@ -50,6 +50,7 @@ To include ```doi4j``` in your project, add the following sections to your pom.x
 Please see examples below or the [unit tests](./src/test/java/org/globalbioticinteractions/doi/DOITest.java) for examples usage.
 
 ```java
+import org.globalbioticinteraction.doi.DOI;
 
 // create a doi using registrant and suffix
 DOI doi = new DOI("123", "456");
