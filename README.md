@@ -1,5 +1,5 @@
 # doi4j
-[![Build Status](https://travis-ci.org/globalbioticinteractions/doi4j.svg?branch=master)](https://travis-ci.org/globalbioticinteractions/nomer) [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
+[![Build Status](https://travis-ci.org/globalbioticinteractions/doi4j.svg?branch=master)](https://travis-ci.org/globalbioticinteractions/doi4j) [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 [![DOI](https://zenodo.org/badge/117019305.svg)](https://zenodo.org/badge/latestdoi/117019305)
 
 Java library for parsing and presenting Digital Object Identifiers (DOIs).
@@ -86,7 +86,7 @@ Please use [maven](https://maven.apache.org) version 3.3+ , otherwise you might 
 
 ## Contribute
 
-Feel free to join in. All welcome. Open an [issue](https://github.com/globalbioticinteractions/nomer/issues)!
+Feel free to join in. All welcome. Open an [issue](https://github.com/globalbioticinteractions/doi4j/issues)!
 
 ## License
 
