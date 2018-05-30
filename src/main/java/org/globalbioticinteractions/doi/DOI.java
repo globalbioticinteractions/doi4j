@@ -265,7 +265,8 @@ public final class DOI implements Serializable, Comparable<DOI> {
 
     @Override
     public boolean equals(Object other) {
-        return (other != null && other instanceof DOI)
+        return (other != null
+                && other instanceof DOI)
                 && compareTo((DOI) other) == 0;
     }
 
