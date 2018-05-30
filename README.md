@@ -67,7 +67,7 @@ doi.toString();
 // "10.123/456"
 
 // show "printable" doi
-doi.getPrintable();
+doi.toPrintable();
 // "doi:10.123/456"
 
 // get DOI uri
