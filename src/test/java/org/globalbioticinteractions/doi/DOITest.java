@@ -6,7 +6,6 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.assertFalse;
@@ -247,5 +246,25 @@ public class DOITest {
         assertThat(doi1.compareTo(doi2), is(0));
         assertThat(doi2.compareTo(doi3), is(not(0)));
         assertThat(doi1.compareTo(doi3), is(not(0)));
+    }
+
+    @Test
+    public void commonlyUsedPrefixDOI() {
+        assertTrue(DOI.isCommonlyUsedDoiPrefix("doi:"));
+    }
+
+    @Test
+    public void commonlyUsedPrefixSecureDOI() {
+        assertTrue(DOI.isCommonlyUsedDoiPrefix("https://doi.org/"));
+    }
+
+    @Test
+    public void commonlyUsedPrefixDxDOI() {
+        assertTrue(DOI.isCommonlyUsedDoiPrefix("http://dx.doi.org/"));
+    }
+
+    @Test
+    public void notCommonlyUsedPrefixDxDOI() {
+        assertFalse(DOI.isCommonlyUsedDoiPrefix("http://example.org"));
     }
 }
