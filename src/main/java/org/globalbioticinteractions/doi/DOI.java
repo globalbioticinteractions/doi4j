@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * Parses and presents Digital Object Identifiers (DOIs, also see <a href="https://doi.org">https://doi.org</a>).
- * <p>Mainly introduced to avoid encoding mistakes like mentioned in <a href="http://www.doi.org/doi_handbook/2_Numbering.html#2.5.2.3">http://www.doi.org/doi_handbook/2_Numbering.html#2.5.2.3</a> :</p>
+ * <p>Mainly introduced to avoid encoding mistakes like mentioned in <a href="http://www.doi.org/doi_handbook/2_Numbering.html#2.5.2.3">2.5.2.3 Encoding issues</a> :</p>
  * <blockquote>
  * <b>2.5.2.3 Encoding issues</b>
  * <p>There are special encoding requirements when a DOI is used with HTML, URLs, and HTTP. The syntax for Uniform Resource Identifiers (URIs) is much more restrictive than the syntax for the DOI. A URI can be a Uniform Resource Locator (URL) or a Uniform Resource Name (URN).</p>
@@ -33,8 +33,8 @@ public final class DOI implements Serializable {
     private final String suffix;
 
     /**
-     * @param registrantCode DOI registrant code as defined in <a href="https://www.doi.org/doi_handbook/2_Numbering.html#2.2.2">https://www.doi.org/doi_handbook/2_Numbering.html#2.2.2</a>. May not be null or empty.
-     * @param suffix         DOI suffix as defined in <a href="https://www.doi.org/doi_handbook/2_Numbering.html#2.2.3">https://www.doi.org/doi_handbook/2_Numbering.html#2.2.3</a> . May not be null or empty.
+     * @param registrantCode DOI registrant code as defined in <a href="https://www.doi.org/doi_handbook/2_Numbering.html#2.2.2">2.2.2 DOI prefix</a>. May not be null or empty.
+     * @param suffix         DOI suffix as defined in <a href="https://www.doi.org/doi_handbook/2_Numbering.html#2.2.3">2.2.3 DOI suffix</a> . May not be null or empty.
      * @throws NullPointerException     on null DOI registrant code or DOI suffix.
      * @throws IllegalArgumentException on invalid DOI registrant code or DOI suffix.
      */
@@ -96,7 +96,7 @@ public final class DOI implements Serializable {
     }
 
     /**
-     * Returns DOI suffix as defined in <a href="https://www.doi.org/doi_handbook/2_Numbering.html#2.2.3">https://www.doi.org/doi_handbook/2_Numbering.html#2.2.3</a> :
+     * Returns DOI suffix as defined in <a href="https://www.doi.org/doi_handbook/2_Numbering.html#2.2.3">2.2.3 DOI suffix</a> :
      * <blockquote>
      * <b>2.2.3 DOI suffix</b>
      * <p>The DOI suffix shall consist of a character string of any length chosen by the registrant. Each suffix shall be unique to the prefix element that precedes it. The unique suffix can be a sequential number, or it might incorporate an identifier generated from or based on another system used by the registrant (e.g. ISAN, ISBN, ISRC, ISSN, ISTC, ISNI; in such cases, a preferred construction for such a suffix can be specified, as in Example 1).</p>
