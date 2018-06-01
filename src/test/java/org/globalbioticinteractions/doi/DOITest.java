@@ -5,9 +5,6 @@ import org.junit.Test;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNot.not;
