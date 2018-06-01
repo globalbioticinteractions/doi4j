@@ -9,9 +9,7 @@ import java.util.List;
 
 /**
  * Parses and presents Digital Object Identifiers (DOIs, also see <a href="https://doi.org">https://doi.org</a>).
- * <p>
  * <p>Mainly introduced to avoid encoding mistakes like mentioned in http://www.doi.org/doi_handbook/2_Numbering.html#2.5.2.3 :</p>
- * <p>
  * <p>2.5.2.3 Encoding issues</p>
  * <p>There are special encoding requirements when a DOI is used with HTML, URLs, and HTTP. The syntax for Uniform Resource Identifiers (URIs) is much more restrictive than the syntax for the DOI. A URI can be a Uniform Resource Locator (URL) or a Uniform Resource Name (URN).</p>
  * <p>Hexadecimal (%) encoding must be used for characters in a DOI that are not allowed, or have other meanings, in URLs or URNs. Hex encoding consists of substituting for the given character its hexadecimal value preceded by percent. Thus, # becomes %23 and https://doi.org/10.1000/456#789 is encoded as https://doi.org/10.1000/456%23789. The browser does not now encounter the bare #, which it would normally treat as the end of the URL and the start of a fragment, and so sends the entire string off to the DOI network of servers for resolution, instead of stopping at the #. Note that the DOI itself does not change with encoding, merely its representation in a URL. A DOI that has been encoded is decoded before being sent to the DOI Registry. At the moment the decoding is handled by the proxy server https://doi.org/. Only unencoded DOIs are stored in the DOI Registry database. For example, the number above is in the DOI Registry as "10.1000/456#789" and not "10.1000/456%23789". The percent character (%) must always be hex encoded (%25) in any URLs.</p>
@@ -20,7 +18,7 @@ import java.util.List;
  * @see <a href="https://doi.org">https://doi.org</a>
  */
 
-public final class DOI implements Serializable, Comparable<DOI> {
+public final class DOI implements Serializable {
 
     private static final List<String> PRINTABLE_DOI_PREFIX = Collections.singletonList("doi:");
     private final static String DIRECTORY_INDICATOR = "10";
@@ -97,11 +95,8 @@ public final class DOI implements Serializable, Comparable<DOI> {
 
     /**
      * Returns DOI suffix as defined in <a href="https://www.doi.org/doi_handbook/2_Numbering.html#2.2.3">https://www.doi.org/doi_handbook/2_Numbering.html#2.2.3</a> :
-     * <p>
      * <b>2.2.3 DOI suffix</b>
-     * <p>
      * <p>The DOI suffix shall consist of a character string of any length chosen by the registrant. Each suffix shall be unique to the prefix element that precedes it. The unique suffix can be a sequential number, or it might incorporate an identifier generated from or based on another system used by the registrant (e.g. ISAN, ISBN, ISRC, ISSN, ISTC, ISNI; in such cases, a preferred construction for such a suffix can be specified, as in Example 1).</p>
-     * <p>
      * <b>EXAMPLE 1</b>
      * <p>10.1000/123456	DOI name with the DOI prefix "10.1000" and the DOI suffix "123456".</p>
      * <p>EXAMPLE 2</p>
@@ -141,7 +136,6 @@ public final class DOI implements Serializable, Comparable<DOI> {
 
     /**
      * Returns the DOI Directory Indicator. According to <a href="https://www.doi.org/doi_handbook/2_Numbering.html#2.2.2">2.2.2 DOI prefix</a> of the DOI handbook :
-     * <p>
      * <p>The directory indicator shall be "10". The directory indicator distinguishes the entire set of character strings (prefix and suffix) as digital object identifiers within the resolution system.</p>
      *
      * @return directory indicator (always "10")
@@ -153,7 +147,6 @@ public final class DOI implements Serializable, Comparable<DOI> {
 
     /**
      * Returns DOI Registrant Code as defined in <a href="https://www.doi.org/doi_handbook/2_Numbering.html#2.2.2">2.2.2 DOI prefix</a> of the DOI handbook :
-     * <p>
      * <p>The second element of the DOI prefix shall be the registrant code. The registrant code is a unique string assigned to a registrant.
      * </p>
      *
@@ -166,7 +159,6 @@ public final class DOI implements Serializable, Comparable<DOI> {
 
     /**
      * Returns printable string as defined in <a href="https://www.doi.org/doi_handbook/2_Numbering.html#2.6.1">2.6.1 Screen and print presentation</a> of the DOI handbook :
-     * <p>
      * <p>When displayed on screen or in print, a DOI name is preceded by a lowercase "doi:" unless the context clearly indicates that a DOI name is implied. The "doi:" label is not part of the DOI name value.</p>
      * <p>EXAMPLE</p>
      * <p>The DOI name "10.1006/jmbi.1998.2354" is displayed and printed as "doi:10.1006/jmbi.1998.2354".</p>
@@ -265,23 +257,13 @@ public final class DOI implements Serializable, Comparable<DOI> {
 
     @Override
     public boolean equals(Object other) {
-        return (other != null
-                && other instanceof DOI)
-                && compareTo((DOI) other) == 0;
+        return (other instanceof DOI)
+                && (hashCode() - other.hashCode() == 0);
     }
 
     @Override
     public int hashCode() {
-        int result = 0;
-        result = 31 * result + (getRegistrantCode() == null ? 0 : getRegistrantCode().toLowerCase().hashCode());
-        result = 31 * result + (getSuffix() == null ? 0 : getSuffix().toLowerCase().hashCode());
-        return result;
+        return toString().toLowerCase().hashCode();
     }
-
-    @Override
-    public int compareTo(DOI o) {
-        return hashCode() - o.hashCode();
-    }
-
 
 }

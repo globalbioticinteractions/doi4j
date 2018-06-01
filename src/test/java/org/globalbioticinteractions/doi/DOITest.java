@@ -5,6 +5,9 @@ import org.junit.Test;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNot.not;
@@ -227,6 +230,12 @@ public class DOITest {
     }
 
     @Test
+    public void equalsNull() throws MalformedDOIException {
+        DOI doi1 = DOI.create("https://doi.org/10.1/ABC");
+        assertFalse(doi1.equals(null));
+    }
+
+    @Test
     public void hashCaseInsensitive() throws MalformedDOIException {
         DOI doi1 = DOI.create("https://doi.org/10.1/ABC");
         DOI doi2 = DOI.create("https://doi.org/10.1/AbC");
@@ -235,17 +244,6 @@ public class DOITest {
         assertThat(doi1.hashCode(), is(doi2.hashCode()));
         assertThat(doi2.hashCode(), is(not(doi3.hashCode())));
         assertThat(doi1.hashCode(), is(not(doi3.hashCode())));
-    }
-
-    @Test
-    public void compareToCaseInsensitive() throws MalformedDOIException {
-        DOI doi1 = DOI.create("https://doi.org/10.1/ABC");
-        DOI doi2 = DOI.create("https://doi.org/10.1/AbC");
-        DOI doi3 = DOI.create("https://doi.org/10.1/AbCD");
-
-        assertThat(doi1.compareTo(doi2), is(0));
-        assertThat(doi2.compareTo(doi3), is(not(0)));
-        assertThat(doi1.compareTo(doi3), is(not(0)));
     }
 
     @Test
