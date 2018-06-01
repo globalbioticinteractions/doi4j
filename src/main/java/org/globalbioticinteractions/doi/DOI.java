@@ -9,11 +9,13 @@ import java.util.List;
 
 /**
  * Parses and presents Digital Object Identifiers (DOIs, also see <a href="https://doi.org">https://doi.org</a>).
- * <p>Mainly introduced to avoid encoding mistakes like mentioned in http://www.doi.org/doi_handbook/2_Numbering.html#2.5.2.3 :</p>
- * <p>2.5.2.3 Encoding issues</p>
+ * <p>Mainly introduced to avoid encoding mistakes like mentioned in <a href="http://www.doi.org/doi_handbook/2_Numbering.html#2.5.2.3">http://www.doi.org/doi_handbook/2_Numbering.html#2.5.2.3</a> :</p>
+ * <blockquote>
+ * <b>2.5.2.3 Encoding issues</b>
  * <p>There are special encoding requirements when a DOI is used with HTML, URLs, and HTTP. The syntax for Uniform Resource Identifiers (URIs) is much more restrictive than the syntax for the DOI. A URI can be a Uniform Resource Locator (URL) or a Uniform Resource Name (URN).</p>
  * <p>Hexadecimal (%) encoding must be used for characters in a DOI that are not allowed, or have other meanings, in URLs or URNs. Hex encoding consists of substituting for the given character its hexadecimal value preceded by percent. Thus, # becomes %23 and https://doi.org/10.1000/456#789 is encoded as https://doi.org/10.1000/456%23789. The browser does not now encounter the bare #, which it would normally treat as the end of the URL and the start of a fragment, and so sends the entire string off to the DOI network of servers for resolution, instead of stopping at the #. Note that the DOI itself does not change with encoding, merely its representation in a URL. A DOI that has been encoded is decoded before being sent to the DOI Registry. At the moment the decoding is handled by the proxy server https://doi.org/. Only unencoded DOIs are stored in the DOI Registry database. For example, the number above is in the DOI Registry as "10.1000/456#789" and not "10.1000/456%23789". The percent character (%) must always be hex encoded (%25) in any URLs.</p>
  * <p>There are few character restrictions for DOI number strings per se. When DOIs are embedded in URLs, they must follow the URL syntax conventions. The same DOI need not follow those conventions in other contexts.The directory indicator shall be "10". The directory indicator distinguishes the entire set of character strings (prefix and suffix) as digital object identifiers within the resolution system.</p>
+ * </blockquote>
  *
  * @see <a href="https://doi.org">https://doi.org</a>
  */
@@ -31,8 +33,8 @@ public final class DOI implements Serializable {
     private final String suffix;
 
     /**
-     * @param registrantCode DOI registrant code as defined in <a href="https://www.doi.org/doi_handbook/2_Numbering.html#2.2.2">https://www.doi.org/doi_handbook/2_Numbering.html#2.2.2</a>. May not be null.
-     * @param suffix         DOI suffix as defined in <a href="https://www.doi.org/doi_handbook/2_Numbering.html#2.2.3">https://www.doi.org/doi_handbook/2_Numbering.html#2.2.3</a> . May not be null.
+     * @param registrantCode DOI registrant code as defined in <a href="https://www.doi.org/doi_handbook/2_Numbering.html#2.2.2">https://www.doi.org/doi_handbook/2_Numbering.html#2.2.2</a>. May not be null or empty.
+     * @param suffix         DOI suffix as defined in <a href="https://www.doi.org/doi_handbook/2_Numbering.html#2.2.3">https://www.doi.org/doi_handbook/2_Numbering.html#2.2.3</a> . May not be null or empty.
      * @throws NullPointerException     on null DOI registrant code or DOI suffix.
      * @throws IllegalArgumentException on invalid DOI registrant code or DOI suffix.
      */
@@ -95,13 +97,15 @@ public final class DOI implements Serializable {
 
     /**
      * Returns DOI suffix as defined in <a href="https://www.doi.org/doi_handbook/2_Numbering.html#2.2.3">https://www.doi.org/doi_handbook/2_Numbering.html#2.2.3</a> :
+     * <blockquote>
      * <b>2.2.3 DOI suffix</b>
      * <p>The DOI suffix shall consist of a character string of any length chosen by the registrant. Each suffix shall be unique to the prefix element that precedes it. The unique suffix can be a sequential number, or it might incorporate an identifier generated from or based on another system used by the registrant (e.g. ISAN, ISBN, ISRC, ISSN, ISTC, ISNI; in such cases, a preferred construction for such a suffix can be specified, as in Example 1).</p>
      * <b>EXAMPLE 1</b>
      * <p>10.1000/123456	DOI name with the DOI prefix "10.1000" and the DOI suffix "123456".</p>
-     * <p>EXAMPLE 2</p>
+     * <b>EXAMPLE 2</b>
      * <p>10.1038/issn.1476-4687   	DOI suffix using an ISSN. To construct a DOI suffix using an ISSN, precede the ISSN (including the hyphen) with the lowercase letters "issn" and a period, as in this hypothetical example of a DOI for the electronic version of Nature.
      * </p>
+     * </blockquote>
      *
      * @return DOI suffix
      */
@@ -112,20 +116,18 @@ public final class DOI implements Serializable {
 
     /**
      * Returns DOI prefix as defined in <a href="https://www.doi.org/doi_handbook/2_Numbering.html#2.2.2">2.2.2 DOI prefix</a> of the DOI handbook :
-     * <p>
-     * 2.2.2 DOI prefix
-     * <p>
-     * General
+     * <blockquote>
+     * <p><b>2.2.2 DOI prefix</b></p>
+     * <p><b>General</b></p>
      * <p>
      * The DOI prefix shall be composed of a directory indicator followed by a registrant code. These two components shall be separated by a full stop (period).
-     * <p>
-     * Directory indicator
+     * <p><b>Directory indicator</b></p>
      * <p>
      * The directory indicator shall be "10". The directory indicator distinguishes the entire set of character strings (prefix and suffix) as digital object identifiers within the resolution system.
-     * <p>
-     * Registrant code
-     * <p>
-     * The second element of the DOI prefix shall be the registrant code. The registrant code is a unique string assigned to a registrant.
+     * </p>
+     * <p><b>Registrant code</b></p>
+     * <p>The second element of the DOI prefix shall be the registrant code. The registrant code is a unique string assigned to a registrant.</p>
+     * </blockquote>
      *
      * @return DOI prefix
      */
@@ -136,7 +138,7 @@ public final class DOI implements Serializable {
 
     /**
      * Returns the DOI Directory Indicator. According to <a href="https://www.doi.org/doi_handbook/2_Numbering.html#2.2.2">2.2.2 DOI prefix</a> of the DOI handbook :
-     * <p>The directory indicator shall be "10". The directory indicator distinguishes the entire set of character strings (prefix and suffix) as digital object identifiers within the resolution system.</p>
+     * <blockquote>The directory indicator shall be "10". The directory indicator distinguishes the entire set of character strings (prefix and suffix) as digital object identifiers within the resolution system.</blockquote>
      *
      * @return directory indicator (always "10")
      */
@@ -147,8 +149,7 @@ public final class DOI implements Serializable {
 
     /**
      * Returns DOI Registrant Code as defined in <a href="https://www.doi.org/doi_handbook/2_Numbering.html#2.2.2">2.2.2 DOI prefix</a> of the DOI handbook :
-     * <p>The second element of the DOI prefix shall be the registrant code. The registrant code is a unique string assigned to a registrant.
-     * </p>
+     * <blockquote>The second element of the DOI prefix shall be the registrant code. The registrant code is a unique string assigned to a registrant.</blockquote>
      *
      * @return DOI registrant code
      */
@@ -159,9 +160,11 @@ public final class DOI implements Serializable {
 
     /**
      * Returns printable string as defined in <a href="https://www.doi.org/doi_handbook/2_Numbering.html#2.6.1">2.6.1 Screen and print presentation</a> of the DOI handbook :
+     * <blockquote>
      * <p>When displayed on screen or in print, a DOI name is preceded by a lowercase "doi:" unless the context clearly indicates that a DOI name is implied. The "doi:" label is not part of the DOI name value.</p>
-     * <p>EXAMPLE</p>
+     * <b>EXAMPLE</b>
      * <p>The DOI name "10.1006/jmbi.1998.2354" is displayed and printed as "doi:10.1006/jmbi.1998.2354".</p>
+     * </blockquote>
      *
      * @return doi string for use in print or display
      */
@@ -171,7 +174,7 @@ public final class DOI implements Serializable {
     }
 
     /**
-     * @return URI presentation as described in http://www.doi.org/doi_handbook/2_Numbering.html#2.6.2 using default resolver https://doi.org/
+     * @return URI presentation as described in <a href="http://www.doi.org/doi_handbook/2_Numbering.html#2.6.2">http://www.doi.org/doi_handbook/2_Numbering.html#2.6.2</a> using default resolver https://doi.org/
      */
     public URI toURI() {
         return URIForDoi(this);
@@ -179,7 +182,7 @@ public final class DOI implements Serializable {
 
     /**
      * @param resolver resolver (e.g., https://doi.org , http://dx.doi.org) to be used
-     * @return URI presentation as described in http://www.doi.org/doi_handbook/2_Numbering.html#2.6.2 using specified resolver
+     * @return URI presentation as described in <a href="http://www.doi.org/doi_handbook/2_Numbering.html#2.6.2">http://www.doi.org/doi_handbook/2_Numbering.html#2.6.2</a> using specified resolver
      */
 
     public URI toURI(URI resolver) {
