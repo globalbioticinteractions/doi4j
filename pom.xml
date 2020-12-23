@@ -6,7 +6,7 @@
 
     <groupId>org.globalbioticinteractions</groupId>
     <artifactId>doi4j</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1-SNAPSHOT</version>
     <name>doi4j</name>
     <description>Parse and print Digital Object Identifiers (DOIs)</description>
     <url>https://github.com/globalbioticinteractions/doi4j</url>

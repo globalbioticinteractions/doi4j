@@ -1,8 +1,7 @@
 # doi4j
-[![Build Status](https://travis-ci.org/globalbioticinteractions/doi4j.svg?branch=master)](https://travis-ci.org/globalbioticinteractions/doi4j) [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
-[![DOI](https://zenodo.org/badge/134984751.svg)](https://zenodo.org/badge/latestdoi/134984751)
+[![Build Status](https://travis-ci.org/globalbioticinteractions/doi4j.svg?branch=master)](https://travis-ci.org/globalbioticinteractions/doi4j) [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme) ![Maven Central](https://img.shields.io/maven-central/v/org.globalbioticinteractions/doi4j) [![DOI](https://zenodo.org/badge/134984751.svg)](https://zenodo.org/badge/latestdoi/134984751)
 
-Java library for parsing and presenting Digital Object Identifiers (DOIs).
+Java library for parsing and printing Digital Object Identifiers (DOIs).
 
 According [doi.org](https://doi.org), the ```[...] DOI system provides a technical and social infrastructure for the registration and use of persistent interoperable identifiers, called DOIs, for use on digital networks.[...]```.
 
@@ -27,18 +26,11 @@ doi4j is made available through a [maven](https://maven.apache.org) repository.
 
 To include ```doi4j``` in your project, add the following sections to your pom.xml (or equivalent for sbt, gradle etc):
 ```
-  <repositories>
-    <repository>
-        <id>depot.globalbioticinteractions.org</id>
-        <url>https://depot.globalbioticinteractions.org/release</url>
-    </repository>
-  </repositories>
-
   <dependencies>
     <dependency>
       <groupId>org.globalbioticinteractions</groupId>
       <artifactId>doi4j</artifactId>
-      <version>0.0.1</version>
+      <version>0.1.0</version>
     </dependency>
   </dependencies>
 ```
