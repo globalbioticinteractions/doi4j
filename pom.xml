@@ -7,7 +7,8 @@
     <groupId>org.globalbioticinteractions</groupId>
     <artifactId>doi4j</artifactId>
     <version>0.0.3-SNAPSHOT</version>
-    <name>Java library to parse and present Digital Object Identifiers (DOIs).</name>
+    <name>doi4j</name>
+    <description>Parse and print Digital Object Identifiers (DOIs)</description>
 
     <licenses>
         <license>
@@ -60,13 +61,6 @@
                 </plugin>
             </plugins>
         </pluginManagement>
-        <extensions>
-            <extension>
-                <groupId>net.adamcin.org.kuali.maven.wagons</groupId>
-                <artifactId>maven-s3-wagon</artifactId>
-                <version>1.2.2</version>
-            </extension>
-        </extensions>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -168,6 +162,9 @@
                                 <goals>
                                     <goal>sign</goal>
                                 </goals>
+                                <configuration>
+                                    <keyname>${gpg.keyname}</keyname>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
@@ -176,7 +173,7 @@
                     <plugin>
                         <groupId>org.sonatype.plugins</groupId>
                         <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>1.6.3</version>
+                        <version>1.6.7</version>
                         <extensions>true</extensions>
                         <configuration>
                             <serverId>ossrh</serverId>
@@ -188,18 +185,4 @@
             </build>
         </profile>
     </profiles>
-
-    <distributionManagement>
-        <repository>
-            <id>globi-release</id>
-            <name>AWS Release Repository</name>
-            <url>s3://globi/release</url>
-        </repository>
-        <snapshotRepository>
-            <id>globi-snapshot</id>
-            <name>AWS Snapshot Repository</name>
-            <url>s3://globi/snapshot</url>
-        </snapshotRepository>
-    </distributionManagement>
-
 </project>
