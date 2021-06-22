@@ -1,5 +1,5 @@
 # doi4j
-[![Build Status](https://travis-ci.org/globalbioticinteractions/doi4j.svg?branch=master)](https://travis-ci.org/globalbioticinteractions/doi4j) [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme) ![Maven Central](https://img.shields.io/maven-central/v/org.globalbioticinteractions/doi4j) [![DOI](https://zenodo.org/badge/134984751.svg)](https://zenodo.org/badge/latestdoi/134984751)
+[![Build Status](https://travis-ci.com/globalbioticinteractions/doi4j.svg?branch=master)](https://travis-ci.com/globalbioticinteractions/doi4j) [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme) ![Maven Central](https://img.shields.io/maven-central/v/org.globalbioticinteractions/doi4j) [![DOI](https://zenodo.org/badge/134984751.svg)](https://zenodo.org/badge/latestdoi/134984751)
 
 Java library for parsing and printing Digital Object Identifiers (DOIs).
 
